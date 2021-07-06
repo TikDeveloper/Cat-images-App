@@ -1,0 +1,15 @@
+.imgs-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 100%;
+  > div {
+    margin: 1rem;
+    > img {
+      width: 250px;
+      height: 250px;
+    }
+  }
+}

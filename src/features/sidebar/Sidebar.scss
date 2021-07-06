@@ -1,0 +1,42 @@
+nav {
+  margin: 40px;
+  height: 100%;
+  > h2 {
+    color: white;
+  }
+  > ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    > li {
+      position: relative;
+      margin: 1rem 0;
+      > a {
+        line-height: 5em;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 0.4em;
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.35);
+        display: block;
+        transition: all ease-out 300ms;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 0.2em;
+        background: black;
+        left: 0;
+        bottom: 0;
+        background-image: linear-gradient(to right, #5e42a6, #b74e91);
+      }
+      &.active {
+        > a {
+          color: white;
+        }
+      }
+    }
+  }
+}
