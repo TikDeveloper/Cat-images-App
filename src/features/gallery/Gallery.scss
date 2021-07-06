@@ -3,13 +3,25 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  overflow: auto;
-  height: 100%;
   > div {
     margin: 1rem;
     > img {
       width: 250px;
       height: 250px;
     }
+  }
+}
+.loadMore-container {
+  display: flex;
+  justify-content: center;
+  > button {
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    background-color: #b74e91;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
   }
 }

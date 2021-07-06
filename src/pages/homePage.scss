@@ -1,15 +1,12 @@
 .container {
   display: flex;
-  flex-direction: row;
-  height: 100vh;
-  overflow: hidden;
-  justify-content: center;
   .sidebar-container {
-    flex: 1;
     background-color: #312450;
+    min-height: 100vh;
+    overflow: hidden;
   }
   .gallery-container {
-    flex: 3;
+    flex: 3 1;
     background-color: #5e42a6;
     padding: 40px;
     > h1 {

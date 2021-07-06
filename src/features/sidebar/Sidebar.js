@@ -21,7 +21,7 @@ export default function Sidebar() {
 
   const handlerClickCategories = (e, cat_id) => {
     e.preventDefault();
-    dispatch(fetchGalleryImages({ limit: 10, cat_id: cat_id }));
+    dispatch(fetchGalleryImages({ limit: 10, cat_id: cat_id, page: 1 }));
   };
 
   return (
