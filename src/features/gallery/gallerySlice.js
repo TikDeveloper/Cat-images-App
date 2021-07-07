@@ -54,12 +54,10 @@ export const gallerySlice = createSlice({
       })
       .addCase('gallery/fetchMoreImages/pending', (state) => {
         state.status = 'loading';
-        state.loader = true;
       })
       .addCase('gallery/fetchMoreImages/fulfilled', (state, { payload }) => {
         state.status = 'idle';
         state.data = [...state.data, ...payload];
-        state.loader = false;
       });
   },
 });
