@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectActiveItem } from '../sidebar/sidebarSlice';
 import { fetchMoreImages } from './gallerySlice';
+import Loader from '../loader/Loader';
+
+const AsyncImage = ({ src, alt }) => {
+  const [loadedSrc, setLoadedSrc] = useState(null);
+  useEffect(() => {
+    setLoadedSrc(null);
+    if (src) {
+      const handleLoad = () => {
+        setLoadedSrc(src);
+      };
+      const image = new Image();
+      image.addEventListener('load', handleLoad);
+      image.src = src;
+      return () => {
+        image.removeEventListener('load', handleLoad);
+      };
+    }
+  }, [src]);
+  if (loadedSrc === src) {
+    return <img src={src} width='250px' height='250px' alt={alt} />;
+  }
+  return <Loader />;
+};
 
 function GalleryContent({ data }) {
   const dispach = useDispatch();
@@ -16,7 +39,7 @@ function GalleryContent({ data }) {
       <div className='imgs-container'>
         {data.map((item, index) => (
           <div key={index}>
-            <img src={item.url} width='250px' height='250px' alt='img' />
+            <AsyncImage src={item.url} alt={'img'} />
           </div>
         ))}
       </div>
