@@ -13,7 +13,7 @@ export default function Gallery() {
   return (
     <>
       {activeItem ? (
-        <div className='gallery-container'>
+        <div className='gallery-content'>
           {loading ? <Loader /> : <GalleryContent data={images} />}
         </div>
       ) : loading ? (

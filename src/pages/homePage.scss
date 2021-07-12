@@ -1,14 +1,27 @@
 .container {
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
   .sidebar-container {
     background-color: #312450;
     min-height: 100vh;
     overflow: hidden;
+    flex: 0 0 270px;
+    max-width: 320px;
+    @media (max-width: 768px) {
+      flex: 0 0 100%;
+      max-width: 100%;
+      min-height: auto;
+    }
   }
   .gallery-container {
-    flex: 3 1;
+    flex: auto;
     background-color: #5e42a6;
     padding: 40px;
+    @media (max-width: 768px) {
+      padding: 20px;
+    }
     > h1 {
       color: white;
       margin-bottom: 1rem;
