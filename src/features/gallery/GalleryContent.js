@@ -4,6 +4,8 @@ import { selectActiveItem } from '../sidebar/sidebarSlice';
 import { fetchMoreImages } from './gallerySlice';
 import Loader from '../loader/Loader';
 
+import { useTranslation } from 'react-i18next';
+
 const AsyncImage = ({ src, alt }) => {
   const [loadedSrc, setLoadedSrc] = useState(null);
   useEffect(() => {
@@ -34,6 +36,22 @@ function GalleryContent({ data }) {
     dispach(fetchMoreImages({ limit: 10, cat_id: activeItemId }));
   };
 
+  const [t, i18n] = useTranslation('common');
+
+  function getSessionStorageOrDefault(key, defaultValue) {
+    const stored = sessionStorage.getItem(key);
+    if (!stored) {
+      return defaultValue;
+    }
+  }
+
+  const [isLogin, setIsLogin] = useState(
+    getSessionStorageOrDefault('isLogin', '1111111'),
+  );
+  useEffect(() => {
+    sessionStorage.removeItem('isLogin');
+    // sessionStorage.setItem('isLogin', false);
+  }, [isLogin]);
   return (
     <>
       <div className='imgs-container'>
@@ -44,7 +62,9 @@ function GalleryContent({ data }) {
         ))}
       </div>
       <div className='loadMore-container'>
-        <button onClick={handlerLoadMore}>Load More</button>
+        <button onClick={handlerLoadMore}>{t('welcome.title')}</button>
+        <button onClick={() => i18n.changeLanguage('en')}>en</button>
+        <button onClick={() => i18n.changeLanguage('de')}>de</button>
       </div>
     </>
   );
